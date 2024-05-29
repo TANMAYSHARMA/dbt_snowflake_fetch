@@ -49,6 +49,7 @@ etc...
 ## Answers
 
 ### Q1: Structural Data Model
+Relationship from dimension table to fact table is one to many
 
 ![fetch_structural_data_model](https://github.com/TANMAYSHARMA/dbt_snowflake_fetch/assets/10876447/ff1905f4-6a60-422a-899f-d692de7140f6)
 
