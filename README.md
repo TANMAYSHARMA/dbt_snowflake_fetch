@@ -18,6 +18,34 @@
 As we don't have conitinuous flowing data with new timestamps, all the model types are either view or table.
 In a production setting all of the intermediate and onward models would be incremental 
 
+for source model testing I would have added tests like the below
+
+    schema: schema_name
+    loaded_at_field: timestamp_field
+    freshness:
+      warn_after:
+        count: 25
+        period: minute
+      error_after:
+        count: 45
+        period: minute
+    tables:
+      - name: table name
+        config:
+          tags: ['is_live']
+      - name: table_name
+        tests:
+          - expect_row_values_to_have_data_for_every_n_datepart:
+              date_col: timestamp
+              date_part: hour
+              interval: '{{ var("source_test_interval_size", 1) }}'
+              test_start_date: "dateadd(hour, -24, getdate())"
+              test_end_date: "date_trunc('hour', getdate())"
+              exclusion_seed:
+              config:
+                severity: warn
+                warn_if: ">=3" 
+etc...
 ## Answers
 
 ### Q1: Structural Data Model
@@ -375,7 +403,7 @@ To resolve these issues and optimize our data assets, I have a few questions:
 
 Data Completeness
 
-Missing Data: Who should I contact to obtain the missing brands and users in the receipts data?
+Missing Data: Please direct me to the right poc to obtain the missing brands and users information in the receipts data?
 
 Data Duplicates and Inconsistencies
 
