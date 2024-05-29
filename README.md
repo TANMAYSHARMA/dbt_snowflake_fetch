@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-# dbt_snowflake_fetch
-Fetch Rewards Coding Exercise - Analytics Engineer
-=======
 # Fetch Rewards Analytics Engineering Exercise
 
 ## Approach
 - setup dbt-core, dbt-snowflake locally 
-- create a trial snowfalke account
+- create a trial snowflake account
 - connect dbt & snowflake
 - Saved data in s3 bucket, then
 - Create or replace the S3 stage
@@ -19,13 +15,13 @@ Fetch Rewards Coding Exercise - Analytics Engineer
 - finally, use dbt's test-driven design to find data quality issues while modelling
 
 ### Model Type
-As we don't have conitnuous flowing data with new timestamps, all the model tpes are either view or table.
+As we don't have conitinuous flowing data with new timestamps, all the model types are either view or table.
 In a production setting all of the intermediate and onward models would be incremental 
 
 ## Answers
 
 ### Q1: Structural Data Model
-![Fetch Structural Data Model](../../../Documents/fetch_structural_data_model.png)
+
 ![fetch_structural_data_model](https://github.com/TANMAYSHARMA/dbt_snowflake_fetch/assets/10876447/ff1905f4-6a60-422a-899f-d692de7140f6)
 
 Validation for data models with built in tests
@@ -346,52 +342,52 @@ based on manually running queries in the snowflake database to look for data qua
 
 
 Data Issues and Questions
--Hi [Business Leader’s Name],
+- Hi [Business Leader’s Name],
 
--I hope this message finds you well. After thoroughly reviewing our datasets, I have identified several -data quality issues that require clarification and assistance to resolve. Below, I’ve detailed the -findings and questions I have to help us move forward effectively.
+- I hope this message finds you well. After thoroughly reviewing our datasets, I have identified several -data quality issues that require clarification and assistance to resolve. Below, I’ve detailed the -findings and questions I have to help us move forward effectively.
 
--Data Quality Issues Identified
--1. Data Completeness
--Duplicate Entries: There are duplicates in user IDs, brand IDs, and receipt IDs.
--Missing Required Fields:
--Users Table: Missing state, created_at, last_login_at.
--Brands Table: Missing brand_name, category, category_code.
--Receipts Table: Missing user_id, created_at, total_spent.
--Referential Integrity Issues: There are foreign key mismatches between receipts and users, and receipts -and brands, indicating missing references.
--2. Null Values
--Important Attributes: There are significant null values in critical fields like brand_name.
--3. Inconsistencies
--Product Mapping: The same product is mapped to different brands across various receipts.
--Summation Errors: The sum of points earned in individual receipt items does not match the total points -earned in some receipts.
--Empty Receipts: Some receipts show 0 points and 0 items; ideally, every receipt should have at least one -item.
--Inactive Users: Some inactive users have recent login dates, which is inconsistent.
--Abnormal Transactions: There are transactions with abnormally high spend amounts.
--Duplicate Brands: Some brands, such as "BAKEN-ETS", appear to be duplicated.
--Questions for Clarification
--To resolve these issues and optimize our data assets, I have a few questions:
+- Data Quality Issues Identified
+- 1. Data Completeness
+- Duplicate Entries: There are duplicates in user IDs, brand IDs, and receipt IDs.
+- Missing Required Fields:
+- Users Table: Missing state, created_at, last_login_at.
+- Brands Table: Missing brand_name, category, category_code.
+- Receipts Table: Missing user_id, created_at, total_spent.
+- Referential Integrity Issues: There are foreign key mismatches between receipts and users, and receipts -and brands, indicating missing references.
+- 2. Null Values
+- Important Attributes: There are significant null values in critical fields like brand_name.
+- 3. Inconsistencies
+- Product Mapping: The same product is mapped to different brands across various receipts.
+- Summation Errors: The sum of points earned in individual receipt items does not match the total points -earned in some receipts.
+- Empty Receipts: Some receipts show 0 points and 0 items; ideally, every receipt should have at least one -item.
+- Inactive Users: Some inactive users have recent login dates, which is inconsistent.
+- Abnormal Transactions: There are transactions with abnormally high spend amounts.
+- Duplicate Brands: Some brands, such as "BAKEN-ETS", appear to be duplicated.
+- Questions for Clarification
+- To resolve these issues and optimize our data assets, I have a few questions:
 
--Data Completeness
--Missing Data: Who should I contact to obtain the missing brands and users in the receipts data?
--File Format Consistency: The format of the users.json.gz file differs from others. Can we standardize -this?
--Data Duplicates and Inconsistencies
--Duplicate Entries: Can I consult with someone on the business team to establish business logic for -cleaning up duplicate entries and inconsistencies in product mapping?
--Abnormal Data Points
--Transaction Guidelines: Do we have any guidelines on average or maximum spend and points per transaction -to identify and address anomalies?
--Use Case Questions
--To better design the data model and ensure it meets your needs, I need insights into your usage patterns:
+- Data Completeness
+- Missing Data: Who should I contact to obtain the missing brands and users in the receipts data?
+- File Format Consistency: The format of the users.json.gz file differs from others. Can we standardize -this?
+- Data Duplicates and Inconsistencies
+- Duplicate Entries: Can I consult with someone on the business team to establish business logic for -cleaning up duplicate entries and inconsistencies in product mapping?
+- Abnormal Data Points
+- Transaction Guidelines: Do we have any guidelines on average or maximum spend and points per transaction -to identify and address anomalies?
+- Use Case Questions
+- To better design the data model and ensure it meets your needs, I need insights into your usage patterns:
 
--Data Access Frequency: How frequently will you access this data ex: on a hourly, daily or monthly cadence?
--Data Granularity: At what level do you usually analyze this data ex: brand/category performance week-over-week, MoM, YoY?
--Data Update Frequency: How often will new data be provided?
--Data Freshness: What are your expectations for data freshness ex: data available by 9 : am early morning, or data updated every 2 hours, or on a dilay cadence?
--Historical Data Requirements: How far back do you need to look into the data ex: last 30 days, 50 days, 6 months, 1 years, 2 years?
--Data Restatement: Do you expect this data to be restated? If so, how frequently? (Can apply a pre or a post hook accordingly)
--Additional Contacts: Is there an analyst on your team who will be working with this data regularly whom I -can contact for further requirements?
--Background Information
--This dataset operates at a transaction level, which could result in significant data volume, impacting -performance and compute costs. I am exploring ways to scale down the data size by reducing history or -granularity without compromising its usability.
+- Data Access Frequency: How frequently will you access this data ex: on a hourly, daily or monthly cadence?
+- Data Granularity: At what level do you usually analyze this data ex: brand/category performance week-over-week, MoM, YoY?
+- Data Update Frequency: How often will new data be provided?
+- Data Freshness: What are your expectations for data freshness ex: data available by 9 : am early morning, or data updated every 2 hours, or on a dilay cadence?
+- Historical Data Requirements: How far back do you need to look into the data ex: last 30 days, 50 days, 6 months, 1 years, 2 years?
+- Data Restatement: Do you expect this data to be restated? If so, how frequently? (Can apply a pre or a post hook accordingly)
+- Additional Contacts: Is there an analyst on your team who will be working with this data regularly whom I -can contact for further requirements?
+- Background Information
+- This dataset operates at a transaction level, which could result in significant data volume, impacting -performance and compute costs. I am exploring ways to scale down the data size by reducing history or -granularity without compromising its usability.
 
--Thank you for your attention to these matters. I look forward to your guidance and support in resolving -these issues.
+- Thank you for your attention to these matters. I look forward to your guidance and support in resolving -these issues.
 
--Best regards,
--Tanmay Sharma
+- Best regards,
+- Tanmay Sharma
 >>>>>>> f8437c6 (feat: fetch coding assignment)
