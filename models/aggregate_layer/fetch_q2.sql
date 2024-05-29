@@ -5,7 +5,8 @@
 }}
 
 -- How does the ranking of the top 5 brands by receipts scanned for the recent month compare to the ranking for the previous month?
--- Answer: Since the data was not generating any results I wrote a query to instead generate count_of_receipts for the last 6 months by brand_name
+-- Answer: query results to the above question was not generating any results 
+-- I wrote a query to instead generate count_of_receipts for the last 6 months by brand_name
 with monthly_receipts as (
 
     select
@@ -17,6 +18,8 @@ with monthly_receipts as (
         using(receipt_id)
     left join dim_brands as db
         on fcli.barcode = db.barcode
+-- a join on brand_id would have been ideal, but since the messy data brand_id join is not possible 
+-- barcode join is resulting in very few brands getting captured  
     {{ dbt_utils.group_by(2) }}
 
 ),
