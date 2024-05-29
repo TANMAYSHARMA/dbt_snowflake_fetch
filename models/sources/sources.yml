@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: fetch_dbt
+    database: fetch_analytics
+    schema: fetch_dbt
+    tables:
+      - name: brands_raw_json_staging
+      - name: brands_flattened
+        description: "List of brands with their attributes"
+      - name: receipts_raw_json_staging
+      - name: receipts_flattened
+        description: "List of receipts with their attributes"
+      - name: users_raw_json_staging
+      - name: users_flattened	  
+        description: "List of users with their attributes"

@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: dim_brands
+    columns:
+      - name: brand_id
+        data_tests:
+          - not_null
+          - unique
+  - name: dim_items
+    columns:
+      - name: item_id
+        data_tests:
+          - not_null
+          - unique
+  - name: dim_users
+    columns:  
+      - name: user_id
+        data_tests:
+          - not_null
+          - unique
+  - name: fact_receipts
+    columns:  
+      - name: receipt_id
+        data_tests:
+          - not_null
+          - unique
+  - name: fact_receipt_line_items
+    columns:  
+      - name: receipt_item_id
+        data_tests:
+          - not_null
+          - unique

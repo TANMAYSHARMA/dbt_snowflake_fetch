@@ -1,0 +1,224 @@
+version: 2
+
+models:
+  - name: brands_interim
+    columns:
+      - name: barcode
+        description: "The barcode on the item"
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: brand_id
+        description: "brand uuid"
+        data_tests:
+          - not_null
+          - unique
+      - name: brand_code
+        description: "String that corresponds with the brand column in a partner product file"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
+      - name: brand_name
+        description: "Describing the name of the brand"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
+      - name: category
+        description: "The category name for which the brand sells products in"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
+      - name: category_code
+        description: "The category code that references a BrandCategory"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
+      - name: cpg_id
+        description: "consumer packages goods id"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
+      - name: cpg_ref
+        description: "Which metric to use to track pricing & profitability"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
+      - name: is_top_brand
+        description: "A boolean indicator for whether the brand should be featured as a top brand"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
+  - name: receipts_interim
+    columns:
+      - name: receipt_id
+        description: "uuid for this receipt"
+        data_tests:
+          - not_null
+      - name: bonus_points_earned
+        description: "Number of bonus points that were awarded upon receipt completion"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
+      - name: bonus_points_earned_reason
+        description: "event that triggered bonus points"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
+      - name: created_at
+        description: "The date that the event was created"
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: scanned_at
+        description: "Date that the user scanned their receipt"
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: finished_at
+        description: "Date that the receipt finished processing"
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: modified_at
+        description: "The date the event was modified"
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: points_awarded_at
+        description: "The date we awarded points for the transaction"
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: points_earned
+        description: "The number of points earned for the receipt"
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: purchased_at
+        description: "The date of the purchase"
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: purchased_item_count
+        description: "Count of number of items on the receipt"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: rewards_receipt_status
+        description: "Status of the receipt through receipt validation and processing"
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: total_spent
+        description: "The total amount on the receipt"
+        data_tests:
+          - not_null
+      - name: user_id
+        description: "string id back to the User collection for the user who scanned the receipt"
+        data_tests:
+          - not_null
+          - unique
+  - name: receipt_line_items
+    columns:
+      - name: receipt_id
+        description: "uuid for this receipt"
+        data_tests:
+          - not_null          
+  - name: users_interim
+    columns:
+      - name: user_id
+        description: "user_id"
+        data_tests:
+          - not_null
+          - unique
+      - name: state
+        description: "Which state does the user belong"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: created_at
+        description: "When the user created their account"
+        data_tests:
+          - not_null
+      - name: last_login_at
+        description: "Last time the user was recorded logging in to the app"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: role
+        description: "constant value set to 'CONSUMER'"
+        data_tests:
+          - not_null
+      - name: is_active
+        description: "indicates if the user is active; only Fetch will de-activate an account with this flag"
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: sign_up_source
+        description: "Source of the Signup Ex: Email, SMS, Marketing Campaign"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: warn
