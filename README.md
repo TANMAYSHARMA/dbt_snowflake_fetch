@@ -340,7 +340,7 @@ Fact_receipts
 
 
 ### Q2: SQL Queries
-See queries in the model/aggregate layer
+See queries in the [model/aggregate layer](https://github.com/TANMAYSHARMA/dbt_snowflake_fetch/tree/main/models/aggregate_layer)
 
 ### Q3: Evaluate Data Quality Issues in the Data Provided
 Generic Data quality tests are set up in the respective yml files of the model. 
