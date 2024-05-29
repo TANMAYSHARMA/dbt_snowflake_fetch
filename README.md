@@ -24,8 +24,9 @@ In a production setting all of the intermediate and onward models would be incre
 
 ## Answers
 
-### Q1: Data Model
+### Q1: Structural Data Model
 ![Fetch Structural Data Model](../../../Documents/fetch_structural_data_model.png)
+![fetch_structural_data_model](https://github.com/TANMAYSHARMA/dbt_snowflake_fetch/assets/10876447/ff1905f4-6a60-422a-899f-d692de7140f6)
 
 Validation for data models with built in tests
 
