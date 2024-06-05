@@ -12,9 +12,9 @@ with receipts_deduped as (
     select
         receipt_id,
         bonus_points_earned,
-		bonus_points_earned_reason,
-		created_date as created_at,
-		scanned_date as scanned_at,
+	bonus_points_earned_reason,
+	created_date as created_at,
+	scanned_date as scanned_at,
         finished_date as finished_at,
         modify_date as modified_at,	
         points_awarded_date as points_awarded_at,
